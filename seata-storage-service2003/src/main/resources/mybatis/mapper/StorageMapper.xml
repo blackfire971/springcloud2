@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sam.springcloud.storage.dao.StorageDao">
+    <insert id="create" parameterType="com.sam.springcloud.storage.domain.Storage">
+        insert into storage_tbl (id, commodity_code, count)
+        values (null, #{commodityCode}, #{count})
+    </insert>
+
+    <update id="decrease" parameterType="com.sam.springcloud.storage.domain.Storage">
+        update storage_tbl set count=count-#{count} where commodity_code=#{commodityCode}
+    </update>
+</mapper>

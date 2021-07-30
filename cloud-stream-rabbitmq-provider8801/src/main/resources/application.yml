@@ -1,0 +1,33 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: cloud-stream-provider
+  cloud:
+    stream:
+      binders:   # messaging-middleware implementation such as Kafka or RabbitMQ
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: admin
+                password: 6fcukeLI
+      bindings:   # a collection of interfaces that identify the input and output channels declaratively
+        output: # identify this is a output binding
+          destination: studyExchange # the name of exchange
+          content-type: application/json # message type (text/plain for String)
+          binder: defaultRabbit # this binding will be binded with binder 'defaultRabbit'
+
+
+eureka:
+  instance:
+    instance-id: payment8001
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka

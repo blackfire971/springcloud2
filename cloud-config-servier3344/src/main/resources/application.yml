@@ -1,0 +1,49 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config
+  cloud:
+    bus:
+      enabled: true
+    config:
+      server:
+        git:
+          label: main
+#          default-label: main
+          uri: https://github.com/blackfire971/cloud-config.git
+          search-paths:
+            - cloud-config
+#      label: main
+  # rabbitmq for config distribute
+  rabbitmq:
+    host: 192.168.1.10
+    port: 5672
+    username: admin
+    password: 6fcukeLI
+
+eureka:
+  instance:
+    instance-id: config3344
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+#close validation
+
+
+# rabbitmq, expose bus refresh endpoint
+#management:
+#  endpoint:
+#    env:
+#      post:
+#        enabled: true
+#  security:
+#    enabled: false
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "bus-refresh"

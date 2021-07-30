@@ -1,0 +1,24 @@
+server:
+  port: 2002
+
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.2:8848
+    alibaba:
+      seata:
+        tx-service-group: order_group
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.2:3306/seata_storage
+    username: sam01
+    password: 6fcukeLI
+
+seata:
+  enable-auto-data-source-proxy: false
+
+mybatis:
+  mapperLocations: classpath:mybatis/mapper/*.xml

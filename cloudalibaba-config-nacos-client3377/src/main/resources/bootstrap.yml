@@ -1,0 +1,20 @@
+server:
+  port: 3377
+
+spring:
+  application:
+    name: nacos-config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.31:8848
+      config:
+#        prefix: nacos-config
+        server-addr: 192.168.0.31:8848
+        file-extension: yaml # identify yml as config file type
+        namespace: 43b56757-5bfe-41f7-a254-b37cfc9b3c0d
+        group: DEV_GROUP
+
+# config reading rule
+# ${spring.cloud.nacos.config.prefix}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+# The default value of spring.cloud.nacos.config.prefix is the value of spring.application.name

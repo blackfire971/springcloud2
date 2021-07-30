@@ -1,0 +1,21 @@
+server:
+  port: 84
+
+spring:
+  application:
+    name: nacos-ribbon-consumer-order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.2:8848
+    sentinel:
+      transport:
+        dashboard: localhost:9999
+        port: 8719
+
+feign:
+  sentinel:
+    enabled: true
+  hystrix:
+    enabled: false
+
